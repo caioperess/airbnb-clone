@@ -4,16 +4,20 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import { AiOutlineMenu } from 'react-icons/ai'
 import { CiGlobe } from 'react-icons/ci'
 
+import { useRegisterModal } from '@/app/features/auth/hooks/useRegisterModal'
+
 import { Avatar } from '../../ui/avatar'
 import { MenuItem } from './menu-item'
 
 export function UserMenu() {
+  const registerModal = useRegisterModal()
+
   return (
     <DropdownMenu.Root>
       <div className="relative">
         <div className="flex flex-row items-center gap-3">
           <button
-            className="hidden cursor-pointer rounded-full px-4 py-3 text-sm font-semibold transition hover:bg-neutral-100 md:block"
+            className="hidden cursor-pointer rounded-full px-4 py-3 text-sm font-semibold transition hover:bg-neutral-100 lg:block"
             onClick={() => {}}
           >
             Airbnb your home
@@ -34,7 +38,7 @@ export function UserMenu() {
 
           <DropdownMenu.Portal>
             <DropdownMenu.Content className="z-50 mt-2 min-w-[8rem] overflow-hidden rounded-xl border bg-white p-1 text-sm shadow-md">
-              <MenuItem label="Login" onClick={() => {}} />
+              <MenuItem label="Login" onClick={() => registerModal.onOpen()} />
               <MenuItem label="Sign out" onClick={() => {}} />
             </DropdownMenu.Content>
           </DropdownMenu.Portal>
